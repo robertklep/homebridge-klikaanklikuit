@@ -1,0 +1,14 @@
+{
+  "name": "homebridge-klikaan-klikuit",
+  "version": "1.0.0",
+  "description": "Homebridge plugin for KlikAanKlikUit™",
+  "main": "index.js",
+  "repository" : "robertklep/homebridge-klikaan-klikuit",
+  "keywords": [ "homebridge-plugin" ],
+  "engines": {
+    "node": ">=4.0.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": "Robert Klep <robert@klep.name>",
+  "license": "MIT"
+}
