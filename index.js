@@ -11,20 +11,18 @@ module.exports = function(homebridge) {
 function KaKuAccessory(log, config) {
   this.log     = log;
   this.name    = config.name;
-  this.service = new Service.Outlet(this.name);
+  this.service = new Service[config.service || 'Outlet'](this.name);
 
-  this.service
-      .getCharacteristic(Characteristic.On)
-      .on('set', (value, callback) => {
-        var cmd = [ 'kaku', config.address, config.device, value ? 'on' : 'off' ].join(' ');
-        this.log('[cmdline]', cmd);
-        try {
-          execSync(cmd);
-          return callback();
-        } catch(e) {
-          return callback(e);
-        }
-      });
+  this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
+    var cmd = [ 'kaku', config.address, config.device, value ? 'on' : 'off' ].join(' ');
+    this.log('[cmdline]', cmd);
+    try {
+      execSync(cmd);
+      return callback();
+    } catch(e) {
+      return callback(e);
+    }
+  });
 };
 
 KaKuAccessory.prototype.getServices = function() {

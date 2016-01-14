@@ -28,6 +28,7 @@ Once you have that working, edit `~/.homebridge/config.json` and add a new acces
         "name"      : "licht woonkamer",
         "address"   : "A",
         "device"    : "1",
+        "service"   : "Lightbulb"
     },
     {
         "accessory" : "KaKu",
