@@ -1,6 +1,6 @@
 # Homebridge KlikAan-KlikUit plugin
 
-This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAan-KlikUit outlets.
+This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAan-KlikUit outlets. This plugin is meant to run on Raspberry Pi's (or boards with a similar GPIO setup).
 
 You'll need an external executable (`kaku`) that will take three arguments: address (A-Z), device number (1-4) and state (on/off).
 
@@ -26,6 +26,7 @@ Once you have that working, edit `~/.homebridge/config.json` and add a new acces
     {
         "accessory" : "KaKu",
         "name"      : "licht woonkamer",
+        "pin"       : 11,
         "address"   : "A",
         "device"    : "1",
         "service"   : "Lightbulb"
@@ -33,8 +34,11 @@ Once you have that working, edit `~/.homebridge/config.json` and add a new acces
     {
         "accessory" : "KaKu",
         "name"      : "licht keuken",
+        "pin"       : 11,
         "address"   : "A",
         "device"    : "2",
     }
 ]
 ```
+
+`pin` is the physical GPIO pin that the 433Mhz transmitter is connected to.
