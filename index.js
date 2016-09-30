@@ -1,6 +1,7 @@
-const execSync = require('child_process').execSync;
+'use strict';
+const KaKu = require('kaku-old');
 
-var Service, Characteristic;
+let Service, Characteristic;
 
 module.exports = function(homebridge) {
   Service        = homebridge.hap.Service;
@@ -9,19 +10,17 @@ module.exports = function(homebridge) {
 };
 
 function KaKuAccessory(log, config) {
+  let kaku     = KaKu(config.pin);
+  let address  = config.address;
+  let device   = config.device;
   this.log     = log;
   this.name    = config.name;
   this.service = new Service[config.service || 'Outlet'](this.name);
 
   this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
-    var cmd = [ 'kaku', config.address, config.device, value ? 'on' : 'off' ].join(' ');
-    this.log('[cmdline]', cmd);
-    try {
-      execSync(cmd);
-      return callback();
-    } catch(e) {
-      return callback(e);
-    }
+    this.log('Switching outlet %s%s %s', address, device, value ? 'on' : 'off');
+    kaku.switch(address, device, value);
+    return callback();
   });
 };
 
