@@ -45,4 +45,4 @@ Once you have that working, edit `~/.homebridge/config.json` and add a new acces
 
 ## Disclaimer
 
-Has only been tested with, and therefore only supports, the older KaKu outlets (not the self-learning kind, but the kind that needs to be configured through a rotary dip switch).
+Has only been tested with, and therefore only supports, the older KaKu outlets (not the self-learning kind, but the kind that needs to be configured through a rotary dip switch). It also only supports Homebridge services that respond to the _"On"_ characteristic (_"Outlet"_, _"Lightbulb"_, _"Switch"_).
