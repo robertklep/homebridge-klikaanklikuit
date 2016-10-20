@@ -2,6 +2,8 @@
 
 This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAanKlikUit devices. This plugin is meant to run on Raspberry Pi's (or boards with a similar GPIO setup), using a cheap 433Mhz transmitter (see [this page](http://shop.ninjablocks.com/blogs/how-to/7506204-adding-433-to-your-raspberry-pi) for more information on how to connect the transmitter to your Raspberry Pi).
 
+**DISCLAIMER**: this plugin is not in any way endorsed by, or related to, COCO International B.V. or Trust International B.V.
+
 ## Installation
 
 ```
