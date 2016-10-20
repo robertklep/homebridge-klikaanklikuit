@@ -1,9 +1,9 @@
 {
-  "name": "homebridge-klikaan-klikuit",
-  "version": "2.0.0",
+  "name": "homebridge-klikaanklikuit",
+  "version": "1.0.0",
   "description": "Homebridge plugin for KlikAanKlikUit™",
   "main": "index.js",
-  "repository": "robertklep/homebridge-klikaan-klikuit",
+  "repository": "robertklep/homebridge-klikaanklikuit",
   "keywords": [
     "homebridge-plugin"
   ],

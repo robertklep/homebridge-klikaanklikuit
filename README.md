@@ -5,7 +5,7 @@ This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allo
 ## Installation
 
 ```
-$ npm i robertklep/homebridge-klikaan-klikuit -g
+$ npm i robertklep/homebridge-klikaanklikuit -g
 ```
 
 Homebridge plugins need to be installed globally, so the `-g` is mandatory. You may need to use `sudo` as well.
