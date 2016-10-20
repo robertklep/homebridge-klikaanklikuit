@@ -14,6 +14,6 @@
   "author": "Robert Klep <robert@klep.name>",
   "license": "MIT",
   "dependencies": {
-    "kaku-old": "^1.0.0"
+    "kaku-rpi": "^2.0.0"
   }
 }
