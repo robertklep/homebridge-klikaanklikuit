@@ -46,11 +46,20 @@ class KaKuAccessory {
   constructor(config, driver, log) {
     this.name    = config.name; // needs to be set
     this.service = new Service[config.type](config.name);
+    let lastCall = null;
 
-    let previousState = null;
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
-      if (value === previousState) return callback();
-      previousState = value;
+      // If a device is dimmable, we have to prevent the `on` command to be
+      // sent too often. Otherwise, the device may end up in dimming mode
+      // (which we don't want).
+      if (config.dimmable && value) {
+        // Wait at least two seconds between `on` calls to accept a new one.
+        if (lastCall && Date.now() - lastCall < 2000) {
+          log(`throttling "on" calls for dimmable '${ config.name }'`);
+          return callback();
+        }
+        lastCall = Date.now();
+      }
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) ${ value ? 'on' : 'off' }`);
       driver.switch(config.address, config.device, value);
       return callback();
@@ -67,7 +76,7 @@ class KaKuAccessory {
           // (setting the same value twice seems to turn off the device).
           if (level === previousLevel) return callback();
           previousLevel = level;
-          
+
           // Dim the device.
           log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) to level ${ level }`);
           driver.dim(config.address, config.device, level);
