@@ -1,6 +1,6 @@
 # Homebridge KlikAanKlikUit plugin
 
-This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAanKlikUit devices. This plugin is meant to run on Raspberry Pi's (or boards with a similar GPIO setup), using a cheap 433Mhz transmitter (see [this page](http://shop.ninjablocks.com/blogs/how-to/7506204-adding-433-to-your-raspberry-pi) for more information on how to connect the transmitter to your Raspberry Pi).
+This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAanKlikUit devices. This plugin is meant to run on Raspberry Pi's (or boards with a similar GPIO setup), using a cheap 433Mhz transmitter (see [this page](https://domoticproject.com/controlling-433-mhz-remote-raspberry-pi/) for more information on how to connect the transmitter to your Raspberry Pi).
 
 **DISCLAIMER**: this plugin is not in any way endorsed by, or related to, COCO International B.V. or Trust International B.V.
 
@@ -50,7 +50,7 @@ Once you have that working, edit `~/.homebridge/config.json` and add a new platf
 }, ...]
 ```
 
-There is only one supported driver, `rpi`. The `pin` property reflects the physical GPIO pin that the 433Mhz transmitter is connected to.
+There is only one supported driver, `rpi`. The `pin` property reflects the physical GPIO pin that the 433Mhz transmitter is connected to. The default is pin 11 (which is GPIO17).
 
 The plugin supports both old-style (configurable through a rotary switch) and new-style (self-learning) KlikAanKlikUit devices. Old-style devices are addressed using a string (`A`, `B`, ...) and a device number. New-style devices are addressed using a number, which is either the unique code of your remote, or a code that you can pick yourself. In case of the latter, you need your device to learn the new code (put it in learning mode and send the _"On"_ command from the Home app).
 
